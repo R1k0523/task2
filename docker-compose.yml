@@ -1,24 +1,8 @@
 version: '2'
 
 services:
-  db:
-    image: postgres
-    container_name: db
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
   app:
     build:
       context: .
     ports:
       - "9024:9024"
-    depends_on:
-      - db
-    environment:
-      SPRING_DS_USERNAME: postgres
-      SPRING_DS_PASSWORD: postgres
-      SPRING_DS_URL: jdbc:postgresql://db:5432/postgres
-      SPRING_DLL_AUTO: update
