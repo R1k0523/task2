@@ -1,0 +1,21 @@
+@startuml
+
+node Пользователь
+node Администратор
+node "API (Load Balancer)" as API
+node Prometheus
+node Database
+node Grafana
+node node1
+node node...
+node nodeN
+Пользователь -- API : REST
+Администратор -- Grafana : Смотрит
+API -- Prometheus : REST
+API -- Database : JDBC
+Grafana -- Prometheus : REST
+Prometheus -- node1 : RPC
+Prometheus -- node... : RPC
+Prometheus -- nodeN : RPC
+
+@enduml
